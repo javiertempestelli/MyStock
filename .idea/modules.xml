@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InventoryManagement.iml" filepath="$PROJECT_DIR$/InventoryManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyStock.iml" filepath="$PROJECT_DIR$/.idea/modules/MyStock.iml" group="MyStock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyStock-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyStock-app.iml" group="MyStock/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
