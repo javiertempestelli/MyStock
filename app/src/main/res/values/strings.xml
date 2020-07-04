@@ -35,6 +35,7 @@
     <string name="from_gallery_desc">Elegir desde galeria</string>
     <string name="sell_button_desc">Vender</string>
     <string name="add_button_desc">Agregar</string>
+    <string name="logo">Logo</string>
 
     <string name="product_name_hint">Nombre de producto</string>
     <string name="product_quantity_hint">Cantidad</string>

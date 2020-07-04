@@ -50,6 +50,7 @@
 
     <Button
         android:id="@+id/sell_button"
-        style="@style/SellButtonList" />
+        style="@style/SellButtonList"
+        android:background="@android:color/transparent" />
 
 </RelativeLayout>

@@ -20,7 +20,7 @@
         <ImageView
             android:id="@+id/empty_products_list"
             style="@style/EmptyViewImage"
-            android:contentDescription="Logo" />
+            android:contentDescription="@string/logo" />
 
         <TextView
             android:id="@+id/empty_list_text"
