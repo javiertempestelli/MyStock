@@ -98,13 +98,12 @@ public class InventoryProvider extends ContentProvider {
         if (supplierNameString == null) {
             throw new IllegalArgumentException("Product requires a supplier name");
         }
-        String supplierPhoneString = values.getAsString(ProductEntry.SUPPLIER_PHONE);
-        int phone_length = supplierPhoneString.length();
-        if (supplierPhoneString != null && phone_length < 7) {
-            throw new IllegalArgumentException("Product requires a valid phone number. Please enter at least 7 digit phone number.");
-        }
+        String productExpirationString = values.getAsString(ProductEntry.PRODUCT_EXPIRATION);
+//        int phone_length = productExpirationString.length();
+
 
         SQLiteDatabase db = inventoryDbHelper.getWritableDatabase();
+        System.out.println(values);
         long id = db.insert(ProductEntry.TABLE_NAME, null, values);
         if (id == -1) {
             Log.e(LOG_TAG, "Failed to insert row for " + uri);
@@ -170,8 +169,8 @@ public class InventoryProvider extends ContentProvider {
         if (supplierNameString == null) {
             throw new IllegalArgumentException("Product requires a supplier name");
         }
-        String supplierPhoneString = values.getAsString(ProductEntry.SUPPLIER_PHONE);
-        if (supplierPhoneString == null) {
+        String productExpirationString = values.getAsString(ProductEntry.PRODUCT_EXPIRATION);
+        if (productExpirationString == null) {
             throw new IllegalArgumentException("Product requires a valid phone number");
         }
         if (values.size() == 0) {

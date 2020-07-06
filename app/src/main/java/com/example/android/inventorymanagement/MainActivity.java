@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ContentValues values = new ContentValues();
         values.put(ProductEntry.PRODUCT_NAME, name);
         values.put(ProductEntry.PRICE, price);
-        values.put(ProductEntry.SUPPLIER_PHONE, supplier);
+        values.put(ProductEntry.PRODUCT_EXPIRATION, supplier);
         values.put(ProductEntry.QUANTITY, current);
 
         getContentResolver().update(currentProductUri, values, null, null);
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                         ProductEntry.PRODUCT_NAME,
                         ProductEntry.QUANTITY,
                         ProductEntry.PRICE,
-                        ProductEntry.SUPPLIER_PHONE
+                        ProductEntry.PRODUCT_EXPIRATION
                 };
         return new CursorLoader(this,
                 ProductEntry.CONTENT_URI,

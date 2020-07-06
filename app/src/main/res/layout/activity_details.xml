@@ -111,22 +111,22 @@
                 tools:text="Supplier Name" />
 
             <TextView
-                android:id="@+id/details_supplier_phone"
+                android:id="@+id/details_PRODUCT_EXPIRATION"
                 style="@style/ProductText"
                 android:layout_below="@id/details_supplier_name"
                 android:paddingBottom="@dimen/standard_space"
-                tools:text="123456789" />
+                tools:text="01/01/1900" />
 
             <Button
                 android:id="@+id/call_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_alignParentEnd="true"
-                android:textColor="#fff"
-                android:textSize="@dimen/medium_text_size"
-                android:background="@color/colorPrimary"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
                 android:text="Call"
-                android:layout_centerVertical="true" />
+                android:textColor="#fff"
+                android:textSize="@dimen/medium_text_size" />
 
         </RelativeLayout>
 

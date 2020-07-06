@@ -55,13 +55,13 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
     EditText priceEditText;
     @BindView(R.id.edit_supplier_name)
     EditText supplierNameEditText;
-    @BindView(R.id.edit_supplier_phone)
-    EditText supplierPhoneEditText;
+    @BindView(R.id.edit_PRODUCT_EXPIRATION)
+    EditText productExpirationEditText;
 
     Bitmap imageBitmap;
     String productNameString;
     String supplierNameString;
-    String supplierPhoneString;
+    String productExpirationString;
     private Uri productUri;
     private boolean isProductEdited = false;
 
@@ -103,7 +103,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         quantityEditText.setOnTouchListener(onTouchListener);
         priceEditText.setOnTouchListener(onTouchListener);
         supplierNameEditText.setOnTouchListener(onTouchListener);
-        supplierPhoneEditText.setOnTouchListener(onTouchListener);
+        productExpirationEditText.setOnTouchListener(onTouchListener);
 
         newPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,16 +171,18 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 String quantityString = quantityEditText.getText().toString().trim();
                 String priceString = priceEditText.getText().toString().trim();
                 String supplierNameString = supplierNameEditText.getText().toString().trim();
-                String supplierPhoneString = supplierPhoneEditText.getText().toString().trim();
+                String productExpirationString = productExpirationEditText.getText().toString().trim();
                 getBytes(imageBitmap);
 
-                if (TextUtils.isEmpty(productNameString) || TextUtils.isEmpty(priceString) || TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(supplierPhoneString)) {
+                if (TextUtils.isEmpty(productNameString) || TextUtils.isEmpty(priceString) || TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierNameString)) {
+//                if (TextUtils.isEmpty(productNameString) || TextUtils.isEmpty(priceString) || TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierNameString) || TextUtils.isEmpty(productExpirationString)) {
                     Toast.makeText(this, getString(R.string.empty_field_toast), Toast.LENGTH_LONG).show();
-                } else if (TextUtils.getTrimmedLength(supplierPhoneString) < 8) {
-                    Toast.makeText(this, getString(R.string.wrong_phone_length_toast), Toast.LENGTH_LONG).show();
-                } else if (TextUtils.isDigitsOnly(supplierPhoneString) == false) {
-                    Toast.makeText(this, getString(R.string.wrong_phone_toast), Toast.LENGTH_LONG).show();
-                } else {
+                } //else if (TextUtils.getTrimmedLength(productExpirationString) < 8) {
+                  //  Toast.makeText(this, getString(R.string.wrong_phone_length_toast), Toast.LENGTH_LONG).show();
+             //   } //else if (TextUtils.isDigitsOnly(productExpirationString) == false) {
+                  //Toast.makeText(this, getString(R.string.wrong_phone_toast), Toast.LENGTH_LONG).show();
+                //}
+                else {
                     saveProduct();
                     finish();
                 }
@@ -279,12 +281,12 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         String stringQuantity = quantityEditText.getText().toString().trim();
         String stringPrice = priceEditText.getText().toString().trim();
         String stringSupplierName = supplierNameEditText.getText().toString().trim();
-        String stringSupplierPhone = supplierPhoneEditText.getText().toString().trim();
+        String stringProductExpiration = productExpirationEditText.getText().toString().trim();
         byte[] imageByte = getBytes(imageBitmap);
         if (productUri == null &&
                 TextUtils.isEmpty(stringProductName) && TextUtils.isEmpty(stringPrice)
                 && TextUtils.isEmpty(stringQuantity) && TextUtils.isEmpty(stringSupplierName)
-                && TextUtils.isEmpty(stringSupplierPhone)) {
+                && TextUtils.isEmpty(stringProductExpiration)) {
             return;
         }
 
@@ -293,7 +295,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         values.put(ProductEntry.QUANTITY, stringQuantity);
         values.put(ProductEntry.PRICE, stringPrice);
         values.put(ProductEntry.SUPPLIER_NAME, stringSupplierName);
-        values.put(ProductEntry.SUPPLIER_PHONE, stringSupplierPhone);
+        values.put(ProductEntry.PRODUCT_EXPIRATION, stringProductExpiration);
         if (imageByte != null) {
             values.put(ProductEntry.IMAGE, imageByte);
         }
@@ -324,7 +326,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                         ProductEntry.QUANTITY,
                         ProductEntry.PRICE,
                         ProductEntry.SUPPLIER_NAME,
-                        ProductEntry.SUPPLIER_PHONE,
+                        ProductEntry.PRODUCT_EXPIRATION,
                         ProductEntry.IMAGE
                 };
         return new CursorLoader(this,
@@ -347,13 +349,13 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 int quantityIndex = cursor.getColumnIndex(ProductEntry.QUANTITY);
                 int priceIndex = cursor.getColumnIndex(ProductEntry.PRICE);
                 int supplierNameIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_NAME);
-                int supplierPhoneIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_PHONE);
+                int productExpirationIndex = cursor.getColumnIndex(ProductEntry.PRODUCT_EXPIRATION);
                 int imageIndex = cursor.getColumnIndex(ProductEntry.IMAGE);
                 productNameString = cursor.getString(productNameIndex);
                 int quantityInteger = cursor.getInt(quantityIndex);
                 int priceInteger = cursor.getInt(priceIndex);
                 supplierNameString = cursor.getString(supplierNameIndex);
-                supplierPhoneString = cursor.getString(supplierPhoneIndex);
+                productExpirationString = cursor.getString(productExpirationIndex);
                 byte[] b = cursor.getBlob(imageIndex);
 
                 if (b == null) {
@@ -366,7 +368,7 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
                 quantityEditText.setText(String.valueOf(quantityInteger));
                 priceEditText.setText(String.valueOf(priceInteger));
                 supplierNameEditText.setText(supplierNameString);
-                supplierPhoneEditText.setText(supplierPhoneString);
+                productExpirationEditText.setText(productExpirationString);
             }
             while (cursor.moveToNext());
         }
@@ -379,6 +381,6 @@ public class EditActivity extends AppCompatActivity implements LoaderManager.Loa
         priceEditText.setText("");
         quantityEditText.setText("");
         supplierNameEditText.setText("");
-        supplierPhoneEditText.setText("");
+        productExpirationEditText.setText("");
     }
 }

@@ -51,12 +51,12 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     TextView priceTextView;
     @BindView(R.id.details_supplier_name)
     TextView supplierNameTextView;
-    @BindView(R.id.details_supplier_phone)
+    @BindView(R.id.details_PRODUCT_EXPIRATION)
     TextView supplierPhoneTextView;
 
     String supplierNameString;
     String productNameString;
-    String supplierPhoneString;
+    String productExpirationString;
 
     Bitmap imageBitmap;
     private Uri productUri;
@@ -109,7 +109,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                                         ProductEntry.QUANTITY,
                                         ProductEntry.PRICE,
                                         ProductEntry.SUPPLIER_NAME,
-                                        ProductEntry.SUPPLIER_PHONE,
+                                        ProductEntry.PRODUCT_EXPIRATION,
                                         ProductEntry.IMAGE
                                 };
                         Cursor cursor = getContentResolver().query(productUri, projection, null, null, null);
@@ -119,11 +119,11 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                                 int quantityIndex = cursor.getColumnIndex(ProductEntry.QUANTITY);
                                 int priceIndex = cursor.getColumnIndex(ProductEntry.PRICE);
                                 int supplierNameIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_NAME);
-                                int supplierPhoneIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_PHONE);
+                                int productExpirationIndex = cursor.getColumnIndex(ProductEntry.PRODUCT_EXPIRATION);
                                 productNameString = cursor.getString(nameIndex);
                                 int priceInteger = cursor.getInt(priceIndex);
                                 supplierNameString = cursor.getString(supplierNameIndex);
-                                supplierPhoneString = cursor.getString(supplierPhoneIndex);
+                                productExpirationString = cursor.getString(productExpirationIndex);
                                 int quantityInteger = cursor.getInt(quantityIndex);
 
                                 if (quantityInteger - quantitySubstracted >= 0) {
@@ -133,7 +133,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                                     values1.put(ProductEntry.QUANTITY, currentQuantityInteger);
                                     values1.put(ProductEntry.PRICE, priceInteger);
                                     values1.put(ProductEntry.SUPPLIER_NAME, supplierNameString);
-                                    values1.put(ProductEntry.SUPPLIER_PHONE, supplierPhoneString);
+                                    values1.put(ProductEntry.PRODUCT_EXPIRATION, productExpirationString);
                                     getContentResolver().update(productUri, values1, null, null);
                                 } else if (quantityInteger - quantitySubstracted < 0) {
                                     Toast.makeText(DetailsActivity.this, "Only " + quantityInteger + " products available !", Toast.LENGTH_SHORT).show();
@@ -178,7 +178,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                                         ProductEntry.QUANTITY,
                                         ProductEntry.PRICE,
                                         ProductEntry.SUPPLIER_NAME,
-                                        ProductEntry.SUPPLIER_PHONE,
+                                        ProductEntry.PRODUCT_EXPIRATION,
                                         ProductEntry.IMAGE
                                 };
                         Cursor cursor = getContentResolver().query(productUri, projection, null, null, null);
@@ -188,19 +188,19 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                                 int quantityIndex = cursor.getColumnIndex(ProductEntry.QUANTITY);
                                 int priceIndex = cursor.getColumnIndex(ProductEntry.PRICE);
                                 int supplierNameIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_NAME);
-                                int supplierPhoneIndex = cursor.getColumnIndex(ProductEntry.SUPPLIER_PHONE);
+                                int productExpirationIndex = cursor.getColumnIndex(ProductEntry.PRODUCT_EXPIRATION);
                                 productNameString = cursor.getString(nameIndex);
                                 int quantityInteger = cursor.getInt(quantityIndex);
                                 int priceInteger = cursor.getInt(priceIndex);
                                 supplierNameString = cursor.getString(supplierNameIndex);
-                                supplierPhoneString = cursor.getString(supplierPhoneIndex);
+                                productExpirationString = cursor.getString(productExpirationIndex);
                                 int currentQuantityInteger = (quantityInteger + quantityAdded);
                                 ContentValues values2 = new ContentValues();
                                 values2.put(ProductEntry.PRODUCT_NAME, productNameString);
                                 values2.put(ProductEntry.QUANTITY, currentQuantityInteger);
                                 values2.put(ProductEntry.PRICE, priceInteger);
                                 values2.put(ProductEntry.SUPPLIER_NAME, supplierNameString);
-                                values2.put(ProductEntry.SUPPLIER_PHONE, supplierPhoneString);
+                                values2.put(ProductEntry.PRODUCT_EXPIRATION, productExpirationString);
                                 getContentResolver().update(productUri, values2, null, null);
                             }
                             while (cursor.moveToNext());
@@ -296,7 +296,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                         ProductEntry.QUANTITY,
                         ProductEntry.PRICE,
                         ProductEntry.SUPPLIER_NAME,
-                        ProductEntry.SUPPLIER_PHONE,
+                        ProductEntry.PRODUCT_EXPIRATION,
                         ProductEntry.IMAGE
                 };
         return new CursorLoader(this,
@@ -318,13 +318,13 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                 int quantityIndex = data.getColumnIndex(ProductEntry.QUANTITY);
                 int priceIndex = data.getColumnIndex(ProductEntry.PRICE);
                 int supplierNameIndex = data.getColumnIndex(ProductEntry.SUPPLIER_NAME);
-                int supplierPhoneIndex = data.getColumnIndex(ProductEntry.SUPPLIER_PHONE);
+                int supplierPhoneIndex = data.getColumnIndex(ProductEntry.PRODUCT_EXPIRATION);
                 int imageIndex = data.getColumnIndex(ProductEntry.IMAGE);
                 productNameString = data.getString(productNameIndex);
                 int quantityInteger = data.getInt(quantityIndex);
                 int priceInteger = data.getInt(priceIndex);
                 supplierNameString = data.getString(supplierNameIndex);
-                supplierPhoneString = data.getString(supplierPhoneIndex);
+                productExpirationString = data.getString(supplierPhoneIndex);
                 byte[] imageByte = data.getBlob(imageIndex);
                 if (imageByte == null) {
                     productImageView.setImageResource(R.drawable.no_image);
@@ -336,7 +336,7 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                 quantityTextView.setText(String.valueOf(quantityInteger));
                 priceTextView.setText(String.valueOf(priceInteger));
                 supplierNameTextView.setText(supplierNameString);
-                supplierPhoneTextView.setText(supplierPhoneString);
+                supplierPhoneTextView.setText(productExpirationString);
             }
             while (data.moveToNext());
         }

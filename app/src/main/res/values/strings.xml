@@ -28,7 +28,7 @@
 
     <string name="empty_field_toast">Complete todos los campos</string>
     <string name="wrong_phone_toast">El teléfono solo puede contener números</string>
-    <string name="wrong_phone_length_toast">El teléfono debe tener 7 números minimo.</string>
+    <string name="wrong_phone_length_toast">El formato de vencimiento es DD/MM/AAAA</string>
 
     <string name="product_image_desc">Imagen del producto</string>
     <string name="new_photo_desc">Nueva foto</string>
@@ -41,5 +41,6 @@
     <string name="product_quantity_hint">Cantidad</string>
     <string name="product_price_hint">Precio</string>
     <string name="supplier_name_hint">Vendedor</string>
-    <string name="supplier_phone_hint">Contacto</string>
+    <string name="product_expiration_hint">Vencimiento</string>
+    <string name="PRODUCT_EXPIRATION_hint">Contacto</string>
 </resources>

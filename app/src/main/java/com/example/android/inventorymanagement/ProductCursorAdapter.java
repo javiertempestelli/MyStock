@@ -44,7 +44,7 @@ public class ProductCursorAdapter extends CursorAdapter {
         name = cursor.getString(cursor.getColumnIndex(ProductEntry.PRODUCT_NAME));
         quantity = cursor.getInt(cursor.getColumnIndex(ProductEntry.QUANTITY));
         ;
-        supplier = cursor.getString(cursor.getColumnIndex(ProductEntry.SUPPLIER_PHONE));
+        supplier = cursor.getString(cursor.getColumnIndex(ProductEntry.PRODUCT_EXPIRATION));
         price = cursor.getInt(cursor.getColumnIndex(ProductEntry.PRICE));
 
         TextView nameTextView = view.findViewById(R.id.list_name);

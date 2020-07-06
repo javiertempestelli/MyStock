@@ -96,11 +96,11 @@
                 android:inputType="textEmailAddress" />
 
             <EditText
-                android:id="@+id/edit_supplier_phone"
+                android:id="@+id/edit_PRODUCT_EXPIRATION"
                 style="@style/ProductText"
                 android:layout_below="@+id/edit_supplier_name"
-                android:hint="@string/supplier_phone_hint"
-                android:inputType="phone" />
+                android:hint="@string/product_expiration_hint"
+                android:inputType="date" />
 
         </RelativeLayout>
 
